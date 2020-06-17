@@ -15,7 +15,7 @@ def fixImage(file):
 
         # save as jpg in new dest
         f, e = os.path.splitext(os.path.basename(file))
-    outfile = dest + "/" + f
+    outfile = dest + "/" + f + ".jpeg"
     out.save(outfile, "JPEG")
 
 for file in os.listdir(src):
