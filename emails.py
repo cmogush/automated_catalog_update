@@ -27,6 +27,17 @@ def generate(sender, recipient, subject, body, attachment_path):  # generate the
 
   return message  # returns the finished message
 
+def generate_sans_attachment(sender, recipient, subject, body):  # generate the email / no attachment
+  """Creates an email with an attachment."""
+  # Basic Email formatting
+  message = email.message.EmailMessage()  # create message object
+  message["From"] = sender  # set From to sender
+  message["To"] = recipient  # set To to recipient
+  message["Subject"] = subject  # set Subject to subject
+  message.set_content(body)  # set the message body to body
+
+  return message  # returns the finished message
+
 def send(message):  # send the message
   """Sends the message to the configured SMTP server."""
   mail_server = smtplib.SMTP('localhost')   # create the smtp object (assumes server configured)
