@@ -8,24 +8,25 @@ import reports
 import os
 from datetime import datetime
 
-dir = r"/home/student-00-ab307bfaf59a/supplier-data/descriptions"
+student = "student-00-8915069d6cb8"
+dir = r"/home/{}/supplier-data/descriptions".format(student)
 
 def process_descriptions(dir):
     """iterate over descriptions dir and generate summary from text files"""
-    summary = None
+    summary = ""
     for file in os.listdir(dir):  # iterate over the dir
         f, e = os.path.splitext(file)  # find out the file extension
         if e == ".txt":  # if it's a text file
-            with open(file, 'r') as f:
-                summary = "<br/>"
+            with open(os.path.join(dir, file), 'r') as f:
+                summary += "<br/>"
                 summary += "name: {}<br/>".format(f.readline())
-                summary += "{}<br/>".format(f.readline())
+                summary += "weight: {}<br/>".format(f.readline())
     return summary
 
 def main(argv):
   """Process the descriptions and generate a full report out of it."""
   summary = process_descriptions(dir)
-  today = datetime.date(datetime.now())
+  today = str(datetime.date(datetime.now()))
   reports.generate("/tmp/processed.pdf", "Processed Update on "+today, summary)
 
   # TODO: send the PDF report as an email attachment

@@ -3,7 +3,8 @@ import requests
 import os
 from pathlib import Path
 
-src = r"/home/student-00-ab307bfaf59a/supplier-data/images"
+student = "student-00-8915069d6cb8"
+src = r"/home/{}/supplier-data/images".format(student)
 
 def uploadFile(file):
     """upload the file"""

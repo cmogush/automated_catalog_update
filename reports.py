@@ -10,4 +10,4 @@ def generate(filename, title, additional_info):  # function to generate PDF
   report = SimpleDocTemplate(filename)  # export directory and filename
   report_title = Paragraph(title, styles["h1"])  # title style
   report_info = Paragraph(additional_info, styles["BodyText"])  # body style
-  report.build([report_title, empty_line, report_info])  # generates PDF
+  report.build([report_title, report_info])  # generates PDF

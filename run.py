@@ -2,8 +2,10 @@
 import os
 import requests
 
-dir = r"/home/student-00-ab307bfaf59a/supplier-data/descriptions"
-post_url = "http://34.68.200.112/fruits/"
+student = "student-00-8915069d6cb8"
+ip = "35.193.246.223"
+dir = r"/home/{}/supplier-data/descriptions".format(student)
+post_url = "http://{}/fruits/".format(ip)
 
 def processFiles(dir, post_url):
     """iterate over all text files in directory"""
@@ -20,7 +22,7 @@ def processFiles(dir, post_url):
 def convertToDict(file):
     """convert text file to a dictionary"""
     dict = {}
-    with open(dir+"/"+file, 'r') as f:
+    with open(os.path.join(dir, file), 'r') as f:
         dict['name'] = f.readline()
         weight, lbs = f.readline().split(" ")
         dict['weight'] = int(weight)
